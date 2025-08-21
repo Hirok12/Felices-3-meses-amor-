@@ -107,3 +107,17 @@ body {
   margin-top: 1.5rem;
   line-height: 1.8;
 }
+/* Control de pantallas */
+.pantalla {
+  display: none;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pantalla.active {
+  display: flex;
+}
