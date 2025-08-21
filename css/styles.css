@@ -1,181 +1,88 @@
+/* 🌸 Paleta Atardecer Romántico */
 :root {
-  --color-primario: #ff9a8b;   /* Coral suave */
-  --color-secundario: #fad0c4; /* Rosa durazno */
-  --color-acento: #fbc2eb;     /* Rosa lavanda */
-  --color-texto: #3a3a3a;      /* Gris oscuro elegante */
-  --color-fondo: #fff0f5;      /* Lavanda muy claro */
+  --color-primario: #d81b60;   /* Rosa frambuesa */
+  --color-secundario: #f8bbd0; /* Rosa pastel */
+  --color-acento: #ff8a65;     /* Coral cálido */
+  --color-texto: #2c2c2c;      /* Gris oscuro */
+  --color-fondo: #fff5f8;      /* Fondo rosado suave */
 }
 
-
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  font-family:'Poppins', sans-serif;
-  color:#f7f7f7;
-  background: linear-gradient(to bottom, var(--negro), var(--gris1), var(--gris2));
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-/* Brillos sutiles en el fondo */
-.background-glow{
-  position:fixed; inset:0;
-  background:
-    radial-gradient(800px 400px at 10% 10%, rgba(255, 120, 170, .08), transparent 60%),
-    radial-gradient(700px 350px at 85% 20%, rgba(80, 180, 255, .08), transparent 70%),
-    radial-gradient(600px 300px at 50% 85%, rgba(255, 220, 120, .08), transparent 60%);
-  z-index:-1;
-}
-
-/* Pantallas */
-.pantalla{
-  display:none;
-  min-height:100vh;
-  padding:48px 16px;
-  align-items:center;
-  justify-content:center;
-}
-.pantalla.active{ display:flex; }
-
-/* Tarjetas */
-.card{
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(212,175,55,.25);
-  border-radius:22px;
-  padding:28px 22px;
-  max-width:760px;
-  width:min(92%, 760px);
-  margin:auto;
-  text-align:center;
-  box-shadow:0 20px 50px rgba(0,0,0,.35);
-  backdrop-filter: blur(6px);
-}
-
-.titulo{
-  font-family:'Great Vibes', cursive;
-  color: var(--dorado);
-  font-size: clamp(34px, 6vw, 52px);
-  margin-bottom:10px;
-}
-.subtitulo{
-  font-size:1.05rem;
-  opacity:.9;
-  margin-bottom:16px;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  overflow: hidden;
 }
 
 /* Botones */
-.btn-primario, .btn-secundario{
-  display:inline-block;
-  margin-top:16px;
-  padding:12px 22px;
-  font-weight:600;
-  border:none; border-radius:28px;
-  cursor:pointer;
-  transition: transform .15s ease, box-shadow .15s ease, opacity .2s;
+.btn-primario {
+  background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.btn-primario{
-  color:#fff;
-  background: linear-gradient(135deg, #ff5fa2, #ff9fbf);
-  box-shadow: 0 8px 18px rgba(255,95,162,.25);
-}
-.btn-primario:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(255,95,162,.35); }
-.btn-secundario{
-  color:#1a1a1a; background: #ffe6a7; /* dorado suave */
-}
-.btn-secundario:hover{ transform:translateY(-2px); opacity:.95; }
-
-/* Juego */
-.hud{
-  position:fixed; top:16px; left:50%;
-  transform:translateX(-50%);
-  display:flex; gap:16px; align-items:center;
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(212,175,55,.25);
-  border-radius:16px; padding:10px 14px;
-  backdrop-filter: blur(6px);
-}
-.contador{ font-weight:600; color:#fff; }
-.instrucciones{ font-size:.95rem; opacity:.9; }
-
-.area-juego{
-  position:relative;
-  width:min(900px, 92vw);
-  height:70vh;
-  margin:80px auto 0;
-  border:1px dashed rgba(212,175,55,.3);
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow: inset 0 0 40px rgba(212,175,55,.08);
+.btn-primario:hover {
+  opacity: 0.9;
 }
 
-/* Corazones del juego */
-.heart{
-  position:absolute;
-  top:-60px;
-  font-size: clamp(24px, 3.8vw, 38px);
-  user-select:none;
-  cursor:pointer;
-  filter: drop-shadow(0 6px 8px rgba(0,0,0,.25));
-  animation: caer linear forwards;
+.btn-secundario {
+  background: var(--color-secundario);
+  color: var(--color-texto);
+  font-weight: 500;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
 }
-@keyframes caer{
-  to { transform: translateY(95vh) rotate(360deg); opacity:.85; }
+.btn-secundario:hover {
+  background: #f48fb1;
+}
+
+/* Títulos */
+.titulo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: var(--color-primario);
+  margin-bottom: 1rem;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+/* Tarjetas */
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 /* Galería */
-#pantalla-galeria{ padding-top:32px; }
-.galeria{
-  max-width:1000px; margin:18px auto 0;
-  display:grid; gap:18px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  padding:0 12px;
-}
-.foto{
-  background: rgba(255,255,255,.05);
-  border:1px solid rgba(212,175,55,.25);
-  border-radius:18px; overflow:hidden;
-  text-align:center;
-  transform: translateY(12px); opacity:0;
-  animation: aparecer .8s ease forwards;
-}
-.foto:nth-child(2){ animation-delay:.15s; }
-.foto:nth-child(3){ animation-delay:.3s; }
-
-@keyframes aparecer{
-  to { transform: translateY(0); opacity:1; }
-}
-.foto img{
-  width:100%; height:240px; object-fit:cover;
-  border-bottom:1px solid rgba(212,175,55,.25);
-}
-.foto figcaption{
-  padding:12px 10px; font-style:italic; font-size:.98rem;
+.galeria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-/* Mensaje final */
-.final-card .mensaje-final{
-  margin-top:10px;
-  line-height:1.9;
-  font-size:1.05rem;
+.foto img {
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* Lluvia final de corazones */
-.lluvia{
-  position:fixed; inset:0; pointer-events:none; overflow:hidden;
-}
-.lluvia span{
-  position:absolute;
-  font-size: clamp(22px, 3.2vw, 36px);
-  animation: lluvia 7s linear forwards;
-  filter: drop-shadow(0 8px 10px rgba(0,0,0,.25));
-}
-@keyframes lluvia{
-  from{ transform: translateY(-10vh) rotate(0deg); opacity:1; }
-  to  { transform: translateY(110vh) rotate(270deg); opacity:0; }
-}
-
-/* Utilidades responsivas */
-@media (max-width:480px){
-  .area-juego{ height:64vh; }
-  .hud{ width:92vw; }
+.foto figcaption {
+  margin-top: 0.5rem;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #333;
 }
