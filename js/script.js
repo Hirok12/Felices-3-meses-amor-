@@ -1,116 +1,65 @@
-// script.js
+const music = document.getElementById("bg-music");
+const pantallas = document.querySelectorAll(".pantalla");
+const btnComenzar = document.getElementById("btn-comenzar");
+const btnMensaje = document.getElementById("btn-mensaje");
+const btnCorazones = document.getElementById("btn-corazones");
+const areaJuego = document.getElementById("area-juego");
+const contadorEl = document.getElementById("contador");
+const lluviaFinal = document.getElementById("lluvia-final");
+let contador=0;
 
-document.addEventListener("DOMContentLoaded", () => {
-  let pantallaActual = 0;
-  const pantallas = document.querySelectorAll(".pantalla");
-  const btnComenzar = document.getElementById("btn-comenzar");
-  const btnVerCarta = document.getElementById("btn-ver-carta");
-  const btnVerFinal = document.getElementById("btn-ver-final");
-  const btnFinal = document.getElementById("btn-final");
+function mostrarPantalla(id){
+  pantallas.forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
 
-  // --- Función para mostrar una pantalla ---
-  function mostrarPantalla(i) {
-    pantallas.forEach((p, index) => {
-      p.classList.toggle("active", index === i);
-    });
-    pantallaActual = i;
-  }
+btnComenzar.addEventListener("click",()=>{
+  music.play();
+  mostrarPantalla("pantalla-juego");
+  iniciarJuego();
+});
 
-  // --- Pantalla inicial ---
-  if (btnComenzar) {
-    btnComenzar.addEventListener("click", () => {
-      mostrarPantalla(1); // Ir al juego
-      iniciarJuego();
-    });
-  }
+function iniciarJuego(){
+  contador=0;
+  contadorEl.textContent=contador;
+  let intervalo=setInterval(()=>{
+    crearCorazon(intervalo);
+  },1000);
+}
 
-  // --- Botón para ir a la carta ---
-  if (btnVerCarta) {
-    btnVerCarta.addEventListener("click", () => {
-      mostrarPantalla(2);
-    });
-  }
+function crearCorazon(intervalo){
+  const corazon=document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.textContent="💖";
+  corazon.style.left=Math.random()*90+"%";
+  areaJuego.appendChild(corazon);
 
-  // --- Botón para ir a la pantalla final ---
-  if (btnVerFinal) {
-    btnVerFinal.addEventListener("click", () => {
-      mostrarPantalla(3);
-    });
-  }
-
-  // --- Botón final que lanza la lluvia de corazones ---
-  if (btnFinal) {
-    btnFinal.addEventListener("click", () => {
-      lluviaCorazones();
-    });
-  }
-
-  // ====================
-  // 🎮 Juego de corazones
-  // ====================
-  let puntos = 0;
-  let tiempo = 20;
-  let intervalo;
-
-  const areaJuego = document.getElementById("area-juego");
-  const puntosSpan = document.getElementById("puntos");
-  const tiempoSpan = document.getElementById("tiempo");
-
-  function iniciarJuego() {
-    puntos = 0;
-    tiempo = 20;
-    puntosSpan.textContent = puntos;
-    tiempoSpan.textContent = tiempo;
-    areaJuego.innerHTML = "";
-
-    clearInterval(intervalo);
-    intervalo = setInterval(() => {
-      tiempo--;
-      tiempoSpan.textContent = tiempo;
-      if (tiempo <= 0) {
-        clearInterval(intervalo);
-        mostrarPantalla(2); // Cuando acaba, mostrar carta
-      } else {
-        crearCorazon();
-      }
-    }, 1000);
-  }
-
-  function crearCorazon() {
-    const corazon = document.createElement("div");
-    corazon.classList.add("corazon");
-    corazon.textContent = "💖";
-    corazon.style.left = Math.random() * 90 + "%";
-    corazon.addEventListener("click", () => {
-      puntos++;
-      puntosSpan.textContent = puntos;
-      corazon.remove();
-    });
-    areaJuego.appendChild(corazon);
-
-    setTimeout(() => corazon.remove(), 4000);
-  }
-
-  // ====================
-  // 💕 Lluvia final
-  // ====================
-  function lluviaCorazones() {
-    const lluvia = document.createElement("div");
-    lluvia.classList.add("lluvia");
-    document.body.appendChild(lluvia);
-
-    for (let i = 0; i < 40; i++) {
-      const corazon = document.createElement("div");
-      corazon.classList.add("corazon-final");
-      corazon.textContent = "💘";
-      corazon.style.left = Math.random() * 100 + "vw";
-      corazon.style.animationDuration = (3 + Math.random() * 3) + "s";
-      corazon.style.fontSize = (1 + Math.random() * 2) + "rem";
-      lluvia.appendChild(corazon);
-
-      setTimeout(() => corazon.remove(), 6000);
+  corazon.addEventListener("click",()=>{
+    corazon.remove();
+    contador++;
+    contadorEl.textContent=contador;
+    if(contador>=3){
+      clearInterval(intervalo);
+      setTimeout(()=>mostrarPantalla("pantalla-galeria"),800);
     }
+  });
 
-    setTimeout(() => lluvia.remove(), 7000);
+  setTimeout(()=>corazon.remove(),4000);
+}
+
+btnMensaje.addEventListener("click",()=>{
+  mostrarPantalla("pantalla-final");
+});
+
+btnCorazones.addEventListener("click",()=>{
+  for(let i=0;i<15;i++){
+    const c=document.createElement("div");
+    c.classList.add("corazon-final");
+    c.textContent="💗";
+    c.style.left=Math.random()*100+"vw";
+    c.style.fontSize=(Math.random()*20+20)+"px";
+    c.style.animationDuration=(Math.random()*3+3)+"s";
+    lluviaFinal.appendChild(c);
+    setTimeout(()=>c.remove(),6000);
   }
 });
