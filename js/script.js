@@ -1,51 +1,116 @@
-// Música
-const music = document.getElementById("bg-music");
+// script.js
 
-// Validar fecha para desbloquear
-document.getElementById("btn-desbloquear").addEventListener("click", () => {
-  const fechaIngresada = document.getElementById("fecha-amor").value;
-  const mensajeError = document.getElementById("mensaje-error");
+document.addEventListener("DOMContentLoaded", () => {
+  let pantallaActual = 0;
+  const pantallas = document.querySelectorAll(".pantalla");
+  const btnComenzar = document.getElementById("btn-comenzar");
+  const btnVerCarta = document.getElementById("btn-ver-carta");
+  const btnVerFinal = document.getElementById("btn-ver-final");
+  const btnFinal = document.getElementById("btn-final");
 
-  // Fecha correcta: 23 mayo 2025
-  const fechaCorrecta = "2025-05-23";
+  // --- Función para mostrar una pantalla ---
+  function mostrarPantalla(i) {
+    pantallas.forEach((p, index) => {
+      p.classList.toggle("active", index === i);
+    });
+    pantallaActual = i;
+  }
 
-  if (fechaIngresada === fechaCorrecta) {
-    document.getElementById("pantalla-inicio").classList.remove("active");
-    document.getElementById("pantalla-juego").classList.add("active");
-    music.play();
-  } else {
-    mensajeError.style.display = "block";
-    mensajeError.textContent = "💔 Esa no es la fecha correcta, mi amor";
+  // --- Pantalla inicial ---
+  if (btnComenzar) {
+    btnComenzar.addEventListener("click", () => {
+      mostrarPantalla(1); // Ir al juego
+      iniciarJuego();
+    });
+  }
+
+  // --- Botón para ir a la carta ---
+  if (btnVerCarta) {
+    btnVerCarta.addEventListener("click", () => {
+      mostrarPantalla(2);
+    });
+  }
+
+  // --- Botón para ir a la pantalla final ---
+  if (btnVerFinal) {
+    btnVerFinal.addEventListener("click", () => {
+      mostrarPantalla(3);
+    });
+  }
+
+  // --- Botón final que lanza la lluvia de corazones ---
+  if (btnFinal) {
+    btnFinal.addEventListener("click", () => {
+      lluviaCorazones();
+    });
+  }
+
+  // ====================
+  // 🎮 Juego de corazones
+  // ====================
+  let puntos = 0;
+  let tiempo = 20;
+  let intervalo;
+
+  const areaJuego = document.getElementById("area-juego");
+  const puntosSpan = document.getElementById("puntos");
+  const tiempoSpan = document.getElementById("tiempo");
+
+  function iniciarJuego() {
+    puntos = 0;
+    tiempo = 20;
+    puntosSpan.textContent = puntos;
+    tiempoSpan.textContent = tiempo;
+    areaJuego.innerHTML = "";
+
+    clearInterval(intervalo);
+    intervalo = setInterval(() => {
+      tiempo--;
+      tiempoSpan.textContent = tiempo;
+      if (tiempo <= 0) {
+        clearInterval(intervalo);
+        mostrarPantalla(2); // Cuando acaba, mostrar carta
+      } else {
+        crearCorazon();
+      }
+    }, 1000);
+  }
+
+  function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.textContent = "💖";
+    corazon.style.left = Math.random() * 90 + "%";
+    corazon.addEventListener("click", () => {
+      puntos++;
+      puntosSpan.textContent = puntos;
+      corazon.remove();
+    });
+    areaJuego.appendChild(corazon);
+
+    setTimeout(() => corazon.remove(), 4000);
+  }
+
+  // ====================
+  // 💕 Lluvia final
+  // ====================
+  function lluviaCorazones() {
+    const lluvia = document.createElement("div");
+    lluvia.classList.add("lluvia");
+    document.body.appendChild(lluvia);
+
+    for (let i = 0; i < 40; i++) {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon-final");
+      corazon.textContent = "💘";
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.animationDuration = (3 + Math.random() * 3) + "s";
+      corazon.style.fontSize = (1 + Math.random() * 2) + "rem";
+      lluvia.appendChild(corazon);
+
+      setTimeout(() => corazon.remove(), 6000);
+    }
+
+    setTimeout(() => lluvia.remove(), 7000);
   }
 });
-
-// Botón para pasar del juego a la carta
-document.getElementById("btn-mensaje").addEventListener("click", () => {
-  document.getElementById("pantalla-galeria").classList.remove("active");
-  document.getElementById("pantalla-final").classList.add("active");
-});
-
-// Botón de corazones finales
-document.getElementById("btn-corazones").addEventListener("click", () => {
-  const lluvia = document.getElementById("lluvia-final");
-  for (let i = 0; i < 15; i++) {
-    const heart = document.createElement("div");
-    heart.textContent = "💖";
-    heart.style.position = "absolute";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "-10px";
-    heart.style.fontSize = "24px";
-    heart.style.animation = `caer ${2 + Math.random() * 3}s linear`;
-    lluvia.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 5000);
-  }
-});
-
-// Animación para la lluvia de corazones
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes caer {
-  to { transform: translateY(100vh); opacity: 0; }
-}`;
-document.head.appendChild(style);
