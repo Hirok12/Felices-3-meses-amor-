@@ -5,71 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>3 Meses Contigo 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+  <style>
+    /* === Reset === */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#1a1a2e;
+      color:#fff;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    h1,h2{font-family:'Great Vibes',cursive;}
 
-  <!-- Música -->
-  <audio id="bg-music" loop playsinline>
-    <source src="music/tu-cancion.mp3" type="audio/mpeg">
-  </audio>
+    .pantalla{
+      display:none;
+      min-height:100vh;
+      padding:20px;
+      text-align:center;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+    }
+    .pantalla.active{display:flex;}
 
-  <!-- Fondo animado -->
-  <div class="background-glow"></div>
+    .titulo{font-size:2.5rem;margin-bottom:12px;color:#ffd369;}
+    .subtitulo{font-size:1.2rem;margin-bottom:20px;}
+    .btn-primario{
+      background:#e94560;
+      color:#fff;
+      border:none;
+      padding:12px 24px;
+      font-size:1rem;
+      border-radius:8px;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .btn-primario:hover{background:#ff6f91;}
+    .btn-secundario{
+      background:#16213e;
+      color:#ffd369;
+      border:1px solid #ffd369;
+      padding:10px 20px;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:18px;
+    }
 
-  <!-- 🌸 Pantalla 1: Inicio -->
-  <section id="pantalla-inicio" class="pantalla active">
-    <div class="card">
-      <h1 class="titulo">Feliz 3° mes, mi amor 💖</h1>
-      <p class="subtitulo">Hoy celebramos nuestra historia, hecha de risas, abrazos y momentos inolvidables.</p>
-      <button id="btn-comenzar" class="btn-primario">Comenzar ✨</button>
-    </div>
-  </section>
+    /* === Pantalla juego === */
+    .hud{margin-bottom:15px;}
+    .area-juego{
+      position:relative;
+      width:100%;
+      max-width:500px;
+      height:400px;
+      border:2px dashed rgba(255,255,255,.4);
+      border-radius:12px;
+      background:rgba(255,255,255,.05);
+      overflow:hidden;
+    }
+    .corazon{
+      position:absolute;
+      top:-40px;
+      font-size:2rem;
+      cursor:pointer;
+      animation:caer 4s linear forwards;
+    }
+    @keyframes caer{
+      from{top:-40px;}
+      to{top:100%;}
+    }
 
-  <!-- Pantalla 2: Juego -->
-  <section id="pantalla-juego" class="pantalla">
-    <div class="hud">
-      <div class="contador">Corazones: <span id="contador">0</span> / 3</div>
-      <div class="instrucciones">Toca o haz clic en los corazones que caen 💗</div>
-    </div>
-    <div id="area-juego" class="area-juego"></div>
-  </section>
+    /* === Pantalla carta === */
+    .carta{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:16px;
+      padding:20px;
+      max-width:600px;
+      line-height:1.6;
+      font-size:1.1rem;
+      color:#fdfdfd;
+      text-align:left;
+      box-shadow:0 0 10px rgba(0,0,0,0.4);
+    }
 
-  <!-- Pantalla 3: Carta romántica -->
-  <section id="pantalla-galeria" class="pantalla">
-    <div class="carta">
-      <h2 class="titulo">Mi carta para ti 💌</h2>
-      <p class="texto-carta">
-        Desde que llegaste a mi vida, todo cambió.  
-        Tus sonrisas son mi motor, tus abrazos mi refugio,  
-        y tus palabras mi inspiración.  
-        <br><br>
-        Estos tres meses solo son el comienzo  
-        de una historia que quiero escribir contigo,  
-        día tras día, con amor, paciencia y alegría.  
-        <br><br>
-        Gracias por ser mi persona favorita.  
-        Te amo con todo mi corazón 💖
-      </p>
-    </div>
-    <button id="btn-mensaje" class="btn-primario">Ver la sorpresa final 💕</button>
-  </section>
+    /* === Pantalla final === */
+    .final-card{max-width:600px;}
+    .mensaje-final{margin:18px 0;font-size:1.1rem;}
+    .foto-final img{
+      width:100%;
+      max-width:400px;
+      border-radius:12px;
+      margin-top:15px;
+      border:2px solid #ffd369;
+    }
 
-  <!-- Pantalla 4: Mensaje final con foto -->
-  <section id="pantalla-final" class="pantalla">
-    <div class="card final-card">
-      <h2 class="titulo">Nuestro mundo juntos</h2>
-      <img src="img/foto-freefire.jpg" alt="Jugando Free Fire juntos" class="foto-final">
-      <p class="mensaje-final">
-        Así como en el juego, en la vida somos un gran equipo.  
-        Gracias por estos 3 meses, mi amor.  
-        Lo mejor está por venir 💘
-      </p>
-      <button id="btn-corazones" class="btn-secundario">Más amor 💞</button>
-    </div>
-    <div class="lluvia" id="lluvia-final"></div>
-  </section>
-
-  <script src="js/script.js"></script>
-</body>
-</html>
+    /* === Lluvia final === */
+    .lluvia{
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:999;
+    }
+    .corazon-final{
+      position:absolute;
+      top:-50px;
+      font-size:2rem;
+      animation:caerFinal linear forwards;
+    }
+    @keyframes caerFinal{
+      to{transform:translateY(100vh);opacity:0;
