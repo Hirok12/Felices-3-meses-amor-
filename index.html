@@ -1,27 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorpresa de 3 Meses</title>
-  <link rel="stylesheet" href="./css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3 Meses Contigo 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Música de fondo -->
-  <audio id="bg-music" autoplay loop>
-    <source src="./music/cancion.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio en HTML5.
+
+  <!-- Música (se inicia al hacer clic en "Comenzar") -->
+  <audio id="bg-music" loop playsinline>
+    <!-- Reemplaza el archivo por el tuyo -->
+    <source src="music/tu-cancion.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="contenedor">
-    <h1>💖 Feliz Aniversario de 3 Meses 💖</h1>
-    <button id="descubre">Haz clic para descubrir tu sorpresa</button>
-    <div id="sorpresa" class="oculto">
-      <p>Mi amor, estos tres meses han sido los más felices de mi vida. Gracias por estar a mi lado 💕</p>
-      <img src="./img/foto1.png" alt="Recuerdo especial" class="imagen">
-    </div>
-  </div>
+  <!-- Fondo animado discreto -->
+  <div class="background-glow"></div>
 
-  <script src="./js/script.js"></script>
+  <!-- Pantalla 1: Inicio -->
+  <section id="pantalla-inicio" class="pantalla active">
+    <div class="card">
+      <h1 class="titulo">Feliz 3° mes, mi amor</h1>
+      <p class="subtitulo">¿Lista para descubrir tu sorpresa?</p>
+      <button id="btn-comenzar" class="btn-primario">Comenzar ✨</button>
+    </div>
+  </section>
+
+  <!-- Pantalla 2: Juego -->
+  <section id="pantalla-juego" class="pantalla">
+    <div class="hud">
+      <div class="contador">Corazones: <span id="contador">0</span> / 3</div>
+      <div class="instrucciones">Toca o haz clic en los corazones que caen 💗</div>
+    </div>
+    <div id="area-juego" class="area-juego"></div>
+  </section>
+
+  <!-- Pantalla 3: Galería -->
+  <section id="pantalla-galeria" class="pantalla">
+    <h2 class="titulo">Nuestros 3 meses en momentos</h2>
+    <div class="galeria">
+      <!-- Reemplaza las src por tus imágenes en /img -->
+      <figure class="foto">
+        <img src="img/foto1.jpg" alt="Nosotros 1">
+        <figcaption>Mes 1: El comienzo de algo hermoso</figcaption>
+      </figure>
+      <figure class="foto">
+        <img src="img/foto2.jpg" alt="Nosotros 2">
+        <figcaption>Mes 2: Aprendiendo a amarnos más</figcaption>
+      </figure>
+      <figure class="foto">
+        <img src="img/foto3.jpg" alt="Nosotros 3">
+        <figcaption>Mes 3: Contigo todo es magia</figcaption>
+      </figure>
+    </div>
+    <button id="btn-mensaje" class="btn-primario">Ver mi mensaje para ti 💌</button>
+  </section>
+
+  <!-- Pantalla 4: Mensaje final -->
+  <section id="pantalla-final" class="pantalla">
+    <div class="card final-card">
+      <h2 class="titulo">Gracias por estos 3 meses</h2>
+      <p class="mensaje-final">
+        Eres mi alegría, mi paz y mi hogar. Por cada día contigo, le doy gracias a la vida.  
+        Este es solo el inicio de una historia hermosa. Te amo 💖
+      </p>
+      <button id="btn-corazones" class="btn-secundario">Más amor 💞</button>
+    </div>
+    <!-- Contenedor para lluvia de corazones del final -->
+    <div class="lluvia" id="lluvia-final"></div>
+  </section>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
