@@ -1,11 +1,11 @@
-:root{
-  --negro:#0d0d0d;
-  --gris1:#1a1a1a;
-  --gris2:#2a2a2a;
-  --dorado:#d4af37;
-  --rosa:#ff4d6d;
-  --blanco:#ffffff;
+:root {
+  --color-primario: #ff9a8b;   /* Coral suave */
+  --color-secundario: #fad0c4; /* Rosa durazno */
+  --color-acento: #fbc2eb;     /* Rosa lavanda */
+  --color-texto: #3a3a3a;      /* Gris oscuro elegante */
+  --color-fondo: #fff0f5;      /* Lavanda muy claro */
 }
+
 
 *{box-sizing:border-box;margin:0;padding:0}
 
