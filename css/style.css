@@ -1,19 +1,4 @@
-/* style.css */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-  color: #333;
-  text-align: center;
-  overflow: hidden;
-}
-
-.pantalla {
-  display: none;
-  height: 100vh;
-  padding: 2rem;
-  justify-content: center;
-  align-items: center;
+/
   flex-direction: column;
 }
 
