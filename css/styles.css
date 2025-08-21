@@ -2,8 +2,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: linear-gradient(to bottom, #f8cdda, #1d2b64);
-  color: #fff;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  color: #333;
   text-align: center;
 }
 
@@ -13,24 +13,23 @@ body {
   justify-content: center;
   gap: 10px;
   padding: 15px;
-  background: rgba(255, 192, 203, 0.2);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .tab-button {
-  background: #eecda3;
+  background: #ff758c;
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  color: white;
 }
 
 .tab-button.active,
 .tab-button:hover {
-  background: #ef629f;
-  color: white;
+  background: #ff7eb3;
 }
 
 /* Contenido */
@@ -44,28 +43,26 @@ body {
   display: block;
 }
 
-/* Galería vertical */
-.gallery-vertical {
+/* Galería horizontal */
+.gallery {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
-  align-items: center;
+  margin-top: 20px;
 }
 
-.gallery-vertical img {
-  width: 80%;
-  max-width: 350px;
-  border-radius: 15px;
-  border: 3px solid #eecda3;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+.gallery img {
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Carta */
 .letter {
   font-style: italic;
   font-size: 18px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #eecda3;
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 15px;
   padding: 20px;
   max-width: 600px;
