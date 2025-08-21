@@ -9,21 +9,23 @@
 </head>
 <body>
 
-  <!-- Música (se inicia al hacer clic en "Comenzar") -->
+  <!-- Música (se inicia al desbloquear) -->
   <audio id="bg-music" loop playsinline>
-    <!-- Reemplaza el archivo por el tuyo -->
     <source src="music/tu-cancion.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Fondo animado discreto -->
   <div class="background-glow"></div>
 
-  <!-- Pantalla 1: Inicio -->
+  <!-- Pantalla 1: Candado -->
   <section id="pantalla-inicio" class="pantalla active">
-    <div class="card">
-      <h1 class="titulo">Feliz 3° mes, mi amor</h1>
-      <p class="subtitulo">¿Lista para descubrir tu sorpresa?</p>
-      <button id="btn-comenzar" class="btn-primario">Comenzar ✨</button>
+    <div class="card lock-card">
+      <h1 class="titulo">🔒 Nuestra historia está protegida</h1>
+      <p class="subtitulo">Desbloquéala con nuestra fecha especial</p>
+      
+      <input type="date" id="fecha-amor" class="input-fecha">
+      <button id="btn-desbloquear" class="btn-primario">Desbloquear</button>
+      <p id="mensaje-error" class="error-msg"></p>
     </div>
   </section>
 
@@ -36,38 +38,31 @@
     <div id="area-juego" class="area-juego"></div>
   </section>
 
-  <!-- Pantalla 3: Galería -->
+  <!-- Pantalla 3: Carta romántica -->
   <section id="pantalla-galeria" class="pantalla">
-    <h2 class="titulo">Nuestros 3 meses en momentos</h2>
-    <div class="galeria">
-      <!-- Reemplaza las src por tus imágenes en /img -->
-      <figure class="foto">
-        <img src="img/foto1.jpg" alt="Nosotros 1">
-        <figcaption>Mes 1: El comienzo de algo hermoso</figcaption>
-      </figure>
-      <figure class="foto">
-        <img src="img/foto2.jpg" alt="Nosotros 2">
-        <figcaption>Mes 2: Aprendiendo a amarnos más</figcaption>
-      </figure>
-      <figure class="foto">
-        <img src="img/foto3.jpg" alt="Nosotros 3">
-        <figcaption>Mes 3: Contigo todo es magia</figcaption>
-      </figure>
+    <div class="carta">
+      <h2 class="titulo">Nuestra historia 💌</h2>
+      <p class="texto-carta">
+        Han pasado 3 meses desde que nuestras vidas se cruzaron.  
+        Cada día contigo es una aventura, una sonrisa y un motivo más para agradecer.  
+        Gracias por llegar a mi vida y llenarla de amor, alegría y complicidad.  
+        Te amo con todo mi corazón, y este es solo el comienzo de una historia hermosa. 💖
+      </p>
     </div>
-    <button id="btn-mensaje" class="btn-primario">Ver mi mensaje para ti 💌</button>
+    <button id="btn-mensaje" class="btn-primario">Ver mi mensaje final ✨</button>
   </section>
 
   <!-- Pantalla 4: Mensaje final -->
   <section id="pantalla-final" class="pantalla">
     <div class="card final-card">
       <h2 class="titulo">Gracias por estos 3 meses</h2>
+      <img src="img/nosotros-freefire.jpg" alt="Jugando Free Fire juntos" class="foto-final">
       <p class="mensaje-final">
         Eres mi alegría, mi paz y mi hogar. Por cada día contigo, le doy gracias a la vida.  
-        Este es solo el inicio de una historia hermosa. Te amo 💖
+        Este es solo el inicio de nuestra historia. Te amo 💕
       </p>
       <button id="btn-corazones" class="btn-secundario">Más amor 💞</button>
     </div>
-    <!-- Contenedor para lluvia de corazones del final -->
     <div class="lluvia" id="lluvia-final"></div>
   </section>
 
