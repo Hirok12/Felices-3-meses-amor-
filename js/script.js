@@ -1,116 +1,51 @@
-// ===== Utilidades de pantallas =====
-const pantallas = {
-  inicio: document.getElementById('pantalla-inicio'),
-  juego: document.getElementById('pantalla-juego'),
-  galeria: document.getElementById('pantalla-galeria'),
-  final: document.getElementById('pantalla-final'),
-};
-function mostrar(id){
-  Object.values(pantallas).forEach(p => p.classList.remove('active'));
-  pantallas[id].classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-}
+// Música
+const music = document.getElementById("bg-music");
 
-// ===== Música =====
-const musica = document.getElementById('bg-music');
-function iniciarMusica(){
-  musica.play().catch(()=>{/* algunos navegadores requieren interacción extra */});
-}
+// Validar fecha para desbloquear
+document.getElementById("btn-desbloquear").addEventListener("click", () => {
+  const fechaIngresada = document.getElementById("fecha-amor").value;
+  const mensajeError = document.getElementById("mensaje-error");
 
-// ===== Lógica del juego =====
-const areaJuego = document.getElementById('area-juego');
-const contadorUI = document.getElementById('contador');
-let capturados = 0;
-let spawnerId = null;
+  // Fecha correcta: 23 mayo 2025
+  const fechaCorrecta = "2025-05-23";
 
-function crearCorazon(){
-  const span = document.createElement('span');
-  span.className = 'heart';
-  // Colores románticos mezclados
-  const colores = ['#ff4d6d', '#ff80a6', '#ffd6e8', '#ffb3c6', '#ff8fab'];
-  span.textContent = '❤';
-  span.style.color = colores[Math.floor(Math.random()*colores.length)];
-  span.style.left = Math.random() * (areaJuego.clientWidth - 40) + 'px';
-
-  // Duración de caída aleatoria
-  const dur = 5 + Math.random()*4; // 5s a 9s
-  span.style.animationDuration = `${dur}s`;
-
-  // Click / tap para capturar
-  span.addEventListener('click', () => {
-    capturar(span);
-  }, {passive:true});
-
-  areaJuego.appendChild(span);
-
-  // Limpieza por si no se clicó
-  setTimeout(()=> span.remove(), (dur+0.5)*1000);
-}
-
-function iniciarJuego(){
-  capturados = 0;
-  contadorUI.textContent = '0';
-  // spawn cada 900ms
-  spawnerId = setInterval(crearCorazon, 900);
-}
-
-function terminarJuego(){
-  clearInterval(spawnerId);
-  spawnerId = null;
-  // limpiar corazones restantes
-  document.querySelectorAll('.heart').forEach(h => h.remove());
-  setTimeout(()=> mostrar('galeria'), 500);
-}
-
-function capturar(el){
-  // pequeña animación al capturar
-  el.style.transition = 'transform .25s ease, opacity .25s ease';
-  el.style.transform = 'scale(0.1) rotate(-30deg)';
-  el.style.opacity = '0';
-  setTimeout(()=> el.remove(), 220);
-
-  capturados++;
-  contadorUI.textContent = capturados.toString();
-  if(capturados >= 3){
-    terminarJuego();
+  if (fechaIngresada === fechaCorrecta) {
+    document.getElementById("pantalla-inicio").classList.remove("active");
+    document.getElementById("pantalla-juego").classList.add("active");
+    music.play();
+  } else {
+    mensajeError.style.display = "block";
+    mensajeError.textContent = "💔 Esa no es la fecha correcta, mi amor";
   }
-}
-
-// ===== Lluvia de corazones final =====
-const lluviaFinal = document.getElementById('lluvia-final');
-function soltarCorazonesFinal(cantidad = 40){
-  for(let i=0;i<cantidad;i++){
-    const s = document.createElement('span');
-    s.textContent = '💖';
-    s.style.left = Math.random()*100 + 'vw';
-    s.style.top = (-10 - Math.random()*30) + 'vh';
-    s.style.animationDuration = (5 + Math.random()*5) + 's';
-    lluviaFinal.appendChild(s);
-    setTimeout(()=> s.remove(), 11000);
-  }
-}
-
-// ===== Eventos de navegación =====
-document.getElementById('btn-comenzar').addEventListener('click', () => {
-  iniciarMusica();
-  mostrar('juego');
-  iniciarJuego();
 });
 
-document.getElementById('btn-mensaje').addEventListener('click', () => {
-  mostrar('final');
-  soltarCorazonesFinal(35);
+// Botón para pasar del juego a la carta
+document.getElementById("btn-mensaje").addEventListener("click", () => {
+  document.getElementById("pantalla-galeria").classList.remove("active");
+  document.getElementById("pantalla-final").classList.add("active");
 });
 
-document.getElementById('btn-corazones').addEventListener('click', () => {
-  soltarCorazonesFinal(25);
-});
+// Botón de corazones finales
+document.getElementById("btn-corazones").addEventListener("click", () => {
+  const lluvia = document.getElementById("lluvia-final");
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement("div");
+    heart.textContent = "💖";
+    heart.style.position = "absolute";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "-10px";
+    heart.style.fontSize = "24px";
+    heart.style.animation = `caer ${2 + Math.random() * 3}s linear`;
+    lluvia.appendChild(heart);
 
-// Accesibilidad: también capturar por touch en toda el área si cae justo bajo el dedo
-areaJuego.addEventListener('touchstart', (e) => {
-  const touch = e.touches[0];
-  const el = document.elementFromPoint(touch.clientX, touch.clientY);
-  if(el && el.classList.contains('heart')){
-    capturar(el);
+    setTimeout(() => heart.remove(), 5000);
   }
-}, {passive:true});
+});
+
+// Animación para la lluvia de corazones
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes caer {
+  to { transform: translateY(100vh); opacity: 0; }
+}`;
+document.head.appendChild(style);
