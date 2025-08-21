@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorpresa de 3 Meses</title>
-  <link rel="stylesheet" href="./css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3 Meses Contigo 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Música de fondo -->
-  <audio id="bg-music" autoplay loop>
-    <source src="./music/cancion.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio en HTML5.
+
+  <!-- Música -->
+  <audio id="bg-music" loop>
+    <source src="music/tu-cancion.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="contenedor">
-    <h1>💖 Feliz Aniversario de 3 Meses 💖</h1>
-    <button id="descubre">Haz clic para descubrir tu sorpresa</button>
-    <div id="sorpresa" class="oculto">
-      <p>Mi amor, estos tres meses han sido los más felices de mi vida. Gracias por estar a mi lado 💕</p>
-      <img src="./img/foto1.png" alt="Recuerdo especial" class="imagen">
-    </div>
-  </div>
+  <!-- Pantalla 1 -->
+  <section id="pantalla-inicio" class="pantalla active">
+    <h1 class="titulo">Feliz 3° mes, mi amor</h1>
+    <p class="subtitulo">¿Lista para descubrir tu sorpresa?</p>
+    <button id="btn-comenzar" class="btn-primario">Comenzar ✨</button>
+  </section>
 
-  <script src="./js/script.js"></script>
+  <!-- Pantalla 2 -->
+  <section id="pantalla-juego" class="pantalla">
+    <div class="hud">
+      <div class="contador">Corazones: <span id="contador">0</span> / 3</div>
+      <div class="instrucciones">Toca o haz clic en los corazones que caen 💗</div>
+    </div>
+    <div id="area-juego" class="area-juego"></div>
+  </section>
+
+  <!-- Pantalla 3 -->
+  <section id="pantalla-galeria" class="pantalla">
+    <h2 class="titulo">Una cartita para ti 💌</h2>
+    <div class="carta">
+      Mi amor, en estos tres meses me has mostrado lo que significa la felicidad.  
+      Cada risa tuya ilumina mis días y cada palabra tuya me da calma.  
+      No importa lo que venga, siempre quiero caminar a tu lado.  
+      Gracias por existir, gracias por elegirme.  
+      Este es apenas el comienzo de algo eterno 💖
+    </div>
+    <button id="btn-mensaje" class="btn-primario">Continuar ➡️</button>
+  </section>
+
+  <!-- Pantalla 4 -->
+  <section id="pantalla-final" class="pantalla">
+    <div class="final-card">
+      <h2 class="titulo">Gracias por estos 3 meses</h2>
+      <p class="mensaje-final">
+        Eres mi alegría, mi paz y mi hogar.  
+        Por cada día contigo, le doy gracias a la vida.  
+        Te amo con todo mi corazón 💕
+      </p>
+      <div class="foto-final">
+        <img src="img/freefirenosotros.jpg" alt="Jugando Free Fire">
+      </div>
+      <button id="btn-corazones" class="btn-secundario">Más amor 💞</button>
+    </div>
+    <div class="lluvia" id="lluvia-final"></div>
+  </section>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
