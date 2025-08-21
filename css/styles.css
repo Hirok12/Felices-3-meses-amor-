@@ -1,4 +1,55 @@
+:root{
+  --negro:#0d0d0d;
+  --gris1:#1a1a1a;
+  --gris2:#2a2a2a;
+  --dorado:#d4af37;
+  --rosa:#ff4d6d;
+  --blanco:#ffffff;
+}
 
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Poppins', sans-serif;
+  color:#f7f7f7;
+  background: linear-gradient(to bottom, var(--negro), var(--gris1), var(--gris2));
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Brillos sutiles en el fondo */
+.background-glow{
+  position:fixed; inset:0;
+  background:
+    radial-gradient(800px 400px at 10% 10%, rgba(255, 120, 170, .08), transparent 60%),
+    radial-gradient(700px 350px at 85% 20%, rgba(80, 180, 255, .08), transparent 70%),
+    radial-gradient(600px 300px at 50% 85%, rgba(255, 220, 120, .08), transparent 60%);
+  z-index:-1;
+}
+
+/* Pantallas */
+.pantalla{
+  display:none;
+  min-height:100vh;
+  padding:48px 16px;
+  align-items:center;
+  justify-content:center;
+}
+.pantalla.active{ display:flex; }
+
+/* Tarjetas */
+.card{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:22px;
+  padding:28px 22px;
+  max-width:760px;
+  width:min(92%, 760px);
+  margin:auto;
+  text-align:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+}
 
 .titulo{
   font-family:'Great Vibes', cursive;
