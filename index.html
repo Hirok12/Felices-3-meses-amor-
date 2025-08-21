@@ -9,23 +9,20 @@
 </head>
 <body>
 
-  <!-- Música (se inicia al desbloquear) -->
+  <!-- Música -->
   <audio id="bg-music" loop playsinline>
     <source src="music/tu-cancion.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Fondo animado discreto -->
+  <!-- Fondo animado -->
   <div class="background-glow"></div>
 
-  <!-- Pantalla 1: Candado -->
+  <!-- 🌸 Pantalla 1: Inicio -->
   <section id="pantalla-inicio" class="pantalla active">
-    <div class="card lock-card">
-      <h1 class="titulo">🔒 Nuestra historia está protegida</h1>
-      <p class="subtitulo">Desbloquéala con nuestra fecha especial</p>
-      
-      <input type="date" id="fecha-amor" class="input-fecha">
-      <button id="btn-desbloquear" class="btn-primario">Desbloquear</button>
-      <p id="mensaje-error" class="error-msg"></p>
+    <div class="card">
+      <h1 class="titulo">Feliz 3° mes, mi amor 💖</h1>
+      <p class="subtitulo">Hoy celebramos nuestra historia, hecha de risas, abrazos y momentos inolvidables.</p>
+      <button id="btn-comenzar" class="btn-primario">Comenzar ✨</button>
     </div>
   </section>
 
@@ -41,25 +38,32 @@
   <!-- Pantalla 3: Carta romántica -->
   <section id="pantalla-galeria" class="pantalla">
     <div class="carta">
-      <h2 class="titulo">Nuestra historia 💌</h2>
+      <h2 class="titulo">Mi carta para ti 💌</h2>
       <p class="texto-carta">
-        Han pasado 3 meses desde que nuestras vidas se cruzaron.  
-        Cada día contigo es una aventura, una sonrisa y un motivo más para agradecer.  
-        Gracias por llegar a mi vida y llenarla de amor, alegría y complicidad.  
-        Te amo con todo mi corazón, y este es solo el comienzo de una historia hermosa. 💖
+        Desde que llegaste a mi vida, todo cambió.  
+        Tus sonrisas son mi motor, tus abrazos mi refugio,  
+        y tus palabras mi inspiración.  
+        <br><br>
+        Estos tres meses solo son el comienzo  
+        de una historia que quiero escribir contigo,  
+        día tras día, con amor, paciencia y alegría.  
+        <br><br>
+        Gracias por ser mi persona favorita.  
+        Te amo con todo mi corazón 💖
       </p>
     </div>
-    <button id="btn-mensaje" class="btn-primario">Ver mi mensaje final ✨</button>
+    <button id="btn-mensaje" class="btn-primario">Ver la sorpresa final 💕</button>
   </section>
 
-  <!-- Pantalla 4: Mensaje final -->
+  <!-- Pantalla 4: Mensaje final con foto -->
   <section id="pantalla-final" class="pantalla">
     <div class="card final-card">
-      <h2 class="titulo">Gracias por estos 3 meses</h2>
-      <img src="img/nosotros-freefire.jpg" alt="Jugando Free Fire juntos" class="foto-final">
+      <h2 class="titulo">Nuestro mundo juntos</h2>
+      <img src="img/foto-freefire.jpg" alt="Jugando Free Fire juntos" class="foto-final">
       <p class="mensaje-final">
-        Eres mi alegría, mi paz y mi hogar. Por cada día contigo, le doy gracias a la vida.  
-        Este es solo el inicio de nuestra historia. Te amo 💕
+        Así como en el juego, en la vida somos un gran equipo.  
+        Gracias por estos 3 meses, mi amor.  
+        Lo mejor está por venir 💘
       </p>
       <button id="btn-corazones" class="btn-secundario">Más amor 💞</button>
     </div>
