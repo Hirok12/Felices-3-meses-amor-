@@ -4,47 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sorpresa 3 Meses 💕</title>
-  <!-- Fuentes románticas -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- 🎶 Música de fondo -->
-  <audio autoplay loop playsinline id="musica">
-    <source src="./music/musica.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio en HTML5.
-  </audio>
-  <button id="toggleMusica">⏯️ Música</button>
-
-  <div class="galeria">
-    <section class="seccion">
-      <h1 class="titulo">💖 Feliz 3er Mes Juntos 💖</h1>
-      <img src="./img/foto1.jpg" alt="Recuerdo 1" class="imagen-seccion">
-    </section>
-
-    <section class="seccion">
-      <img src="./img/foto2.jpg" alt="Recuerdo 2" class="imagen-seccion">
-    </section>
-
-    <section class="seccion">
-      <img src="./img/foto3.jpg" alt="Recuerdo 3" class="imagen-seccion">
-    </section>
-
-    <section class="seccion carta-final">
-      <h2 class="titulo">💌 Una Carta para Ti</h2>
-      <p class="mensaje">
-        Mi amor, estos 3 meses contigo han sido lo más hermoso de mi vida.  
-        Cada sonrisa tuya me llena de alegría, cada abrazo me da paz y cada momento a tu lado me demuestra lo afortunado que soy.  
-        No quiero un solo día sin ti, porque eres mi todo. 💕  
-        Que esta sorpresa digital sea un reflejo pequeñito de lo que siento por ti:  
-        un amor infinito, sincero y lleno de detalles solo para ti.  
-      </p>
-      <p class="firma">Con amor eterno, tuyo por siempre 💖</p>
-    </section>
+  <div class="tabs">
+    <button class="tab-button active" onclick="openTab('home')">🌸 Inicio</button>
+    <button class="tab-button" onclick="openTab('gallery')">📷 Recuerdos</button>
+    <button class="tab-button" onclick="openTab('letter')">💌 Carta</button>
   </div>
 
-  <div class="corazones"></div>
+  <!-- Pestaña 1 -->
+  <section id="home" class="tab-content active">
+    <h1>Feliz 3 Meses, Mi Amor 💖</h1>
+    <p>Han pasado 3 meses maravillosos a tu lado y quiero seguir sumando muchos más contigo. 💕</p>
+  </section>
 
-  <script src="./js/script.js"></script>
+  <!-- Pestaña 2 (Galería vertical) -->
+  <section id="gallery" class="tab-content">
+    <h2>Nuestros Momentos</h2>
+    <div class="gallery-vertical">
+      <img src="img/foto1.jpg" alt="Recuerdo 1">
+      <img src="img/foto2.jpg" alt="Recuerdo 2">
+      <img src="img/foto3.jpg" alt="Recuerdo 3">
+      <img src="img/foto4.jpg" alt="Recuerdo 4">
+    </div>
+  </section>
+
+  <!-- Pestaña 3 (Carta especial) -->
+  <section id="letter" class="tab-content">
+    <h2>Para Ti 💌</h2>
+    <p class="letter">
+      Amor mío, estos 3 meses han sido los más hermosos de mi vida.  
+      Cada día a tu lado me siento más feliz, más completo y más enamorado.  
+      Gracias por ser mi compañera, mi apoyo y mi mejor regalo.  
+      Brindo por nosotros, por lo que somos y por lo que construiremos juntos.  
+      Te amo con todo mi corazón. 💕✨
+    </p>
+  </section>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
