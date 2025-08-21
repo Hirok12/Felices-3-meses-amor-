@@ -1,19 +1,20 @@
+// script.js
 
 document.addEventListener("DOMContentLoaded", () => {
   const pantallas = document.querySelectorAll(".pantalla");
-  const btnComenzar = document.getElementById("btn-comenzar");
-  const btnMensaje = document.getElementById("btn-mensaje");
-  const btnCorazones = document.getElementById("btn-corazones");
-  const contadorSpan = document.getElementById("contador");
-  const areaJuego = document.getElementById("area-juego");
+  const btnComenzar = document.querySelector(".btn-comenzar");
+  const btnMensaje = document.querySelector(".btn-mensaje");
+  const btnCorazones = document.querySelector(".btn-corazones");
+  const contadorSpan = document.querySelector(".contador-numero");
+  const areaJuego = document.querySelector(".area-juego");
   const musica = document.getElementById("bg-music");
-  const lluviaFinal = document.getElementById("lluvia-final");
+  const lluviaFinal = document.querySelector(".lluvia");
 
   let contador = 0;
 
-  function mostrarPantalla(id) {
+  function mostrarPantalla(clase) {
     pantallas.forEach(p => p.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
+    document.querySelector(`.${clase}`).classList.add("active");
   }
 
   btnComenzar.addEventListener("click", () => {
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnMensaje.addEventListener("click", () => {
-    mostrarPantalla("pantalla-final");
+    mostrarPantalla("pantalla-galeria");
   });
 
   btnCorazones.addEventListener("click", () => {
