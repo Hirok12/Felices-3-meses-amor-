@@ -1,4 +1,4 @@
-
+/* style.css */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -8,24 +8,14 @@ body {
   overflow: hidden;
 }
 
-/* Ajuste para pantallas con contenido largo */
-#pantalla-galeria,
-#pantalla-final {
+.pantalla {
   display: none;
-  flex-direction: column;
-  justify-content: flex-start; /* que el contenido arranque arriba */
+  height: 100vh;
+  padding: 2rem;
+  justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
-  height: auto;         /* en lugar de forzar 100vh */
-  min-height: 100vh;    /* que al menos ocupe toda la pantalla */
-  overflow-y: auto;     /* permitir desplazamiento */
+  flex-direction: column;
 }
-
-#pantalla-galeria.active,
-#pantalla-final.active {
-  display: flex;
-}
-
 
 .pantalla.active {
   display: flex;
@@ -120,4 +110,13 @@ body {
 @keyframes llover {
   from { top: -50px; opacity: 1; }
   to { top: 100%; opacity: 0; }
+}
+
+/* Pantallas con scroll */
+.pantalla-galeria, .pantalla-final {
+  justify-content: flex-start;
+  padding: 2rem 1rem;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
 }
