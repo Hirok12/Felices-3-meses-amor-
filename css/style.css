@@ -19,7 +19,10 @@ body {
 .pantalla.active {
   display: flex;
 }
-
+/* Pantallas normales que no necesitan scroll */
+.pantalla-inicio, .pantalla-juego {
+  overflow: hidden;
+}
 .titulo {
   font-family: 'Great Vibes', cursive;
   font-size: 3rem;
