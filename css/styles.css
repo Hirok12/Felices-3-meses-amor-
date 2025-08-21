@@ -1,239 +1,113 @@
-/* 🎨 Tipografía y base */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  background: #0d0d0d;
-  overflow-x: hidden;
+/* === Reset === */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#1a1a2e;
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+h1,h2{font-family:'Great Vibes',cursive;}
+
+.pantalla{
+  display:none;
+  min-height:100vh;
+  padding:20px;
+  text-align:center;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.pantalla.active{display:flex;}
+
+.titulo{font-size:2.5rem;margin-bottom:12px;color:#ffd369;}
+.subtitulo{font-size:1.2rem;margin-bottom:20px;}
+
+.btn-primario{
+  background:#e94560;
+  color:#fff;
+  border:none;
+  padding:12px 24px;
+  font-size:1rem;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn-primario:hover{background:#ff6f91;}
+.btn-secundario{
+  background:#16213e;
+  color:#ffd369;
+  border:1px solid #ffd369;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:18px;
 }
 
-h1, h2, h3 {
-  font-family: 'Great Vibes', cursive;
-  margin: 0 0 15px;
-  color: #ff9ecb;
+/* === Pantalla juego === */
+.hud{margin-bottom:15px;}
+.area-juego{
+  position:relative;
+  width:100%;
+  max-width:500px;
+  height:400px;
+  border:2px dashed rgba(255,255,255,.4);
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  overflow:hidden;
+}
+.corazon{
+  position:absolute;
+  top:-40px;
+  font-size:2rem;
+  cursor:pointer;
+  animation:caer 4s linear forwards;
+}
+@keyframes caer{
+  from{top:-40px;}
+  to{top:100%;}
 }
 
-p {
-  margin: 0 0 15px;
+/* === Pantalla carta === */
+.carta{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:16px;
+  padding:20px;
+  max-width:600px;
+  line-height:1.6;
+  font-size:1.1rem;
+  color:#fdfdfd;
+  text-align:left;
+  box-shadow:0 0 10px rgba(0,0,0,0.4);
 }
 
-button {
-  font-family: 'Poppins', sans-serif;
-  border: none;
-  cursor: pointer;
-  transition: transform .2s ease, background .2s ease;
+/* === Pantalla final === */
+.final-card{max-width:600px;}
+.mensaje-final{margin:18px 0;font-size:1.1rem;}
+.foto-final img{
+  width:100%;
+  max-width:400px;
+  border-radius:12px;
+  margin-top:15px;
+  border:2px solid #ffd369;
 }
 
-/* 🌌 Fondo animado */
-.background-glow {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at center, #1a1a1a, #0d0d0d);
-  z-index: -1;
-  overflow: hidden;
+/* === Lluvia final === */
+.lluvia{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:999;
 }
-
-/* 🖼️ Pantallas */
-.pantalla {
-  display: none;
-  min-height: 100vh;
-  padding: 40px 20px;
-  text-align: center;
-  box-sizing: border-box;
+.corazon-final{
+  position:absolute;
+  top:-50px;
+  font-size:2rem;
+  animation:caerFinal linear forwards;
 }
-
-.pantalla.active {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+@keyframes caerFinal{
+  to{transform:translateY(100vh);opacity:0;}
 }
-
-/* 🪄 Tarjetas */
-.card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,192,203,0.4);
-  border-radius: 20px;
-  padding: 25px;
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 0 15px rgba(255,192,203,0.3);
-}
-
-.final-card {
-  max-width: 700px;
-}
-
-/* ✨ Botones */
-.btn-primario {
-  background: linear-gradient(135deg, #ff85c1, #ff4fa3);
-  color: #fff;
-  font-size: 1rem;
-  padding: 12px 25px;
-  border-radius: 25px;
-  margin-top: 15px;
-}
-
-.btn-primario:hover {
-  background: linear-gradient(135deg, #ff4fa3, #ff85c1);
-  transform: scale(1.05);
-}
-
-.btn-secundario {
-  background: rgba(255,255,255,0.1);
-  color: #ffb6e0;
-  font-size: 1rem;
-  padding: 10px 20px;
-  border-radius: 20px;
-  margin-top: 15px;
-}
-
-.btn-secundario:hover {
-  background: rgba(255,255,255,0.2);
-  transform: scale(1.05);
-}
-
-/* ❤️ Juego */
-.hud {
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-}
-
-.area-juego {
-  position: relative;
-  width: 100%;
-  height: 70vh;
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.corazon {
-  position: absolute;
-  font-size: 2rem;
-  cursor: pointer;
-  animation: caer 4s linear forwards;
-}
-
-@keyframes caer {
-  from { top: -50px; }
-  to { top: 100%; }
-}
-
-/* 💌 Carta romántica */
-.carta {
-  max-width: 600px;
-  margin: 30px auto;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,192,203,0.4);
-  border-radius: 20px;
-  padding: 25px;
-  text-align: center;
-  color: #fff;
-  line-height: 1.6;
-  font-size: 1.1rem;
-  box-shadow: 0 0 15px rgba(255,105,180,0.3);
-}
-
-.texto-carta {
-  white-space: pre-line;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* 📸 Foto final */
-.foto-final {
-  width: 100%;
-  max-width: 350px;
-  border-radius: 15px;
-  margin: 15px 0;
-  box-shadow: 0 0 15px rgba(255,105,180,0.5);
-}
-
-/* 💕 Lluvia de corazones */
-.lluvia {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 100;
-}
-
-.corazon-final {
-  position: absolute;
-  font-size: 1.5rem;
-  color: #ff85c1;
-  animation: caer-final 5s linear forwards;
-}
-
-@keyframes caer-final {
-  from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
-/* === Pantalla del juego === */
-#pantalla-juego {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-}
-
-.hud {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  color: #fff;
-}
-
-.area-juego {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  height: 500px;
-  border: 2px dashed rgba(255,255,255,0.4);
-  border-radius: 12px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.05);
-}
-
-/* 💖 Corazones que caen */
-.corazon {
-  position: absolute;
-  top: -40px;
-  font-size: 2rem;
-  cursor: pointer;
-  animation: caer 4s linear forwards;
-}
-
-@keyframes caer {
-  from { top: -40px; }
-  to   { top: 100%; }
-}
-
-/* 💘 Lluvia final */
-.lluvia {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 999;
-}
-
-.corazon-final {
-  position: absolute;
-  top: -50px;
-  animation: caerFinal linear forwards;
-}
-
-@keyframes caerFinal {
-  to {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-
