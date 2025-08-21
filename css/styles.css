@@ -1,181 +1,100 @@
-:root{
-  --negro:#0d0d0d;
-  --gris1:#1a1a1a;
-  --gris2:#2a2a2a;
-  --dorado:#d4af37;
-  --rosa:#ff4d6d;
-  --blanco:#ffffff;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #8B0000, #FFD1DC);
+  color: white;
+  overflow-x: hidden;
+  position: relative;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  font-family:'Poppins', sans-serif;
-  color:#f7f7f7;
-  background: linear-gradient(to bottom, var(--negro), var(--gris1), var(--gris2));
-  min-height:100vh;
-  overflow-x:hidden;
+/* Botón música */
+#toggleMusica {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #FFD700;
+  color: #8B0000;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
 }
 
-/* Brillos sutiles en el fondo */
-.background-glow{
-  position:fixed; inset:0;
-  background:
-    radial-gradient(800px 400px at 10% 10%, rgba(255, 120, 170, .08), transparent 60%),
-    radial-gradient(700px 350px at 85% 20%, rgba(80, 180, 255, .08), transparent 70%),
-    radial-gradient(600px 300px at 50% 85%, rgba(255, 220, 120, .08), transparent 60%);
-  z-index:-1;
+.galeria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-/* Pantallas */
-.pantalla{
-  display:none;
-  min-height:100vh;
-  padding:48px 16px;
-  align-items:center;
-  justify-content:center;
-}
-.pantalla.active{ display:flex; }
-
-/* Tarjetas */
-.card{
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(212,175,55,.25);
-  border-radius:22px;
-  padding:28px 22px;
-  max-width:760px;
-  width:min(92%, 760px);
-  margin:auto;
-  text-align:center;
-  box-shadow:0 20px 50px rgba(0,0,0,.35);
-  backdrop-filter: blur(6px);
+.seccion {
+  margin: 30px 0;
+  text-align: center;
 }
 
-.titulo{
-  font-family:'Great Vibes', cursive;
-  color: var(--dorado);
-  font-size: clamp(34px, 6vw, 52px);
-  margin-bottom:10px;
-}
-.subtitulo{
-  font-size:1.05rem;
-  opacity:.9;
-  margin-bottom:16px;
+.titulo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5em;
+  color: #FFD700;
+  margin-bottom: 15px;
 }
 
-/* Botones */
-.btn-primario, .btn-secundario{
-  display:inline-block;
-  margin-top:16px;
-  padding:12px 22px;
-  font-weight:600;
-  border:none; border-radius:28px;
-  cursor:pointer;
-  transition: transform .15s ease, box-shadow .15s ease, opacity .2s;
-}
-.btn-primario{
-  color:#fff;
-  background: linear-gradient(135deg, #ff5fa2, #ff9fbf);
-  box-shadow: 0 8px 18px rgba(255,95,162,.25);
-}
-.btn-primario:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(255,95,162,.35); }
-.btn-secundario{
-  color:#1a1a1a; background: #ffe6a7; /* dorado suave */
-}
-.btn-secundario:hover{ transform:translateY(-2px); opacity:.95; }
-
-/* Juego */
-.hud{
-  position:fixed; top:16px; left:50%;
-  transform:translateX(-50%);
-  display:flex; gap:16px; align-items:center;
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(212,175,55,.25);
-  border-radius:16px; padding:10px 14px;
-  backdrop-filter: blur(6px);
-}
-.contador{ font-weight:600; color:#fff; }
-.instrucciones{ font-size:.95rem; opacity:.9; }
-
-.area-juego{
-  position:relative;
-  width:min(900px, 92vw);
-  height:70vh;
-  margin:80px auto 0;
-  border:1px dashed rgba(212,175,55,.3);
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow: inset 0 0 40px rgba(212,175,55,.08);
+.imagen-seccion {
+  max-width: 80%;
+  border: 5px solid #FFD700;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  margin-bottom: 15px;
 }
 
-/* Corazones del juego */
-.heart{
-  position:absolute;
-  top:-60px;
-  font-size: clamp(24px, 3.8vw, 38px);
-  user-select:none;
-  cursor:pointer;
-  filter: drop-shadow(0 6px 8px rgba(0,0,0,.25));
-  animation: caer linear forwards;
-}
-@keyframes caer{
-  to { transform: translateY(95vh) rotate(360deg); opacity:.85; }
-}
-
-/* Galería */
-#pantalla-galeria{ padding-top:32px; }
-.galeria{
-  max-width:1000px; margin:18px auto 0;
-  display:grid; gap:18px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  padding:0 12px;
-}
-.foto{
-  background: rgba(255,255,255,.05);
-  border:1px solid rgba(212,175,55,.25);
-  border-radius:18px; overflow:hidden;
-  text-align:center;
-  transform: translateY(12px); opacity:0;
-  animation: aparecer .8s ease forwards;
-}
-.foto:nth-child(2){ animation-delay:.15s; }
-.foto:nth-child(3){ animation-delay:.3s; }
-
-@keyframes aparecer{
-  to { transform: translateY(0); opacity:1; }
-}
-.foto img{
-  width:100%; height:240px; object-fit:cover;
-  border-bottom:1px solid rgba(212,175,55,.25);
-}
-.foto figcaption{
-  padding:12px 10px; font-style:italic; font-size:.98rem;
+.mensaje {
+  font-size: 1.2em;
+  font-style: italic;
+  line-height: 1.6;
+  color: #fff;
+  background: rgba(255, 192, 203, 0.3);
+  border: 2px solid #FFD700;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
-/* Mensaje final */
-.final-card .mensaje-final{
-  margin-top:10px;
-  line-height:1.9;
-  font-size:1.05rem;
+.firma {
+  margin-top: 15px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5em;
+  color: #FFD700;
 }
 
-/* Lluvia final de corazones */
-.lluvia{
-  position:fixed; inset:0; pointer-events:none; overflow:hidden;
-}
-.lluvia span{
-  position:absolute;
-  font-size: clamp(22px, 3.2vw, 36px);
-  animation: lluvia 7s linear forwards;
-  filter: drop-shadow(0 8px 10px rgba(0,0,0,.25));
-}
-@keyframes lluvia{
-  from{ transform: translateY(-10vh) rotate(0deg); opacity:1; }
-  to  { transform: translateY(110vh) rotate(270deg); opacity:0; }
+/* Corazones animados */
+.corazones {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
 }
 
-/* Utilidades responsivas */
-@media (max-width:480px){
-  .area-juego{ height:64vh; }
-  .hud{ width:92vw; }
+.corazon {
+  position: absolute;
+  color: red;
+  font-size: 24px;
+  animation: caer 6s linear infinite;
+}
+
+@keyframes caer {
+  0% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
 }
