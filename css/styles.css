@@ -1,10 +1,11 @@
-/* 🌸 Paleta Atardecer Romántico */
+/* 🌹 Paleta Romance Elegante */
 :root {
-  --color-primario: #d81b60;   /* Rosa frambuesa */
-  --color-secundario: #f8bbd0; /* Rosa pastel */
-  --color-acento: #ff8a65;     /* Coral cálido */
-  --color-texto: #2c2c2c;      /* Gris oscuro */
-  --color-fondo: #fff5f8;      /* Fondo rosado suave */
+  --color-fondo: #fff0f5;       /* Fondo lavanda claro */
+  --color-primario: #c2185b;    /* Rosa oscuro */
+  --color-secundario: #f06292;  /* Rosa vibrante */
+  --color-acento: #ff7043;      /* Coral cálido */
+  --color-texto: #1c1c1c;       /* Gris muy oscuro */
+  --color-texto-sec: #444444;   /* Gris medio */
 }
 
 body {
@@ -12,7 +13,8 @@ body {
   font-family: 'Poppins', sans-serif;
   background: var(--color-fondo);
   color: var(--color-texto);
-  overflow: hidden;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
 /* Botones */
@@ -21,49 +23,56 @@ body {
   color: #fff;
   font-weight: 600;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
+  padding: 0.9rem 1.7rem;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 .btn-primario:hover {
+  transform: scale(1.05);
   opacity: 0.9;
 }
 
 .btn-secundario {
   background: var(--color-secundario);
-  color: var(--color-texto);
+  color: #fff;
   font-weight: 500;
-  padding: 0.7rem 1.2rem;
+  padding: 0.8rem 1.3rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 .btn-secundario:hover {
-  background: #f48fb1;
+  background: #ec407a;
+  transform: scale(1.05);
 }
 
 /* Títulos */
 .titulo {
   font-family: 'Great Vibes', cursive;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: var(--color-primario);
   margin-bottom: 1rem;
 }
 
 .subtitulo {
-  font-size: 1.2rem;
-  color: #444;
+  font-size: 1.3rem;
+  color: var(--color-texto-sec);
+  margin-bottom: 1.5rem;
 }
 
 /* Tarjetas */
 .card {
   background: #fff;
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 18px;
+  padding: 2.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   text-align: center;
+  margin: auto;
+  max-width: 700px;
 }
 
 /* Galería */
@@ -71,18 +80,30 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .foto img {
-  width: 250px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  width: 260px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border: 3px solid var(--color-secundario);
 }
 
 .foto figcaption {
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
   font-style: italic;
-  font-size: 0.95rem;
-  color: #333;
+  font-size: 1rem;
+  color: var(--color-texto-sec);
+  text-align: center;
+  max-width: 260px;
+}
+
+/* Mensaje final */
+.mensaje-final {
+  font-size: 1.2rem;
+  color: var(--color-texto);
+  margin-top: 1.5rem;
+  line-height: 1.8;
 }
