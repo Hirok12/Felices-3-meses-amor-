@@ -8,14 +8,24 @@ body {
   overflow: hidden;
 }
 
-.pantalla {
+/* Ajuste para pantallas con contenido largo */
+#pantalla-galeria,
+#pantalla-final {
   display: none;
-  height: 100vh;
-  padding: 2rem;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: flex-start; /* que el contenido arranque arriba */
+  align-items: center;
+  padding: 2rem 1rem;
+  height: auto;         /* en lugar de forzar 100vh */
+  min-height: 100vh;    /* que al menos ocupe toda la pantalla */
+  overflow-y: auto;     /* permitir desplazamiento */
 }
+
+#pantalla-galeria.active,
+#pantalla-final.active {
+  display: flex;
+}
+
 
 .pantalla.active {
   display: flex;
