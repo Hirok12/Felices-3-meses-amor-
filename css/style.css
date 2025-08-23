@@ -99,10 +99,26 @@ body {
   margin: auto;
 }
 
+.foto-final {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
 .foto-final img {
-  max-width: 100%;
-  border-radius: 15px;
-  margin-top: 1rem;
+  width: 300px;
+  max-width: 90%;
+  border: 6px solid #ffb6c1;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 182, 193, 0.7);
+  transition: transform 0.3s ease-in-out;
+}
+
+.texto-foto {
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #d63384;
+  font-style: italic;
 }
 
 .lluvia .corazon {
