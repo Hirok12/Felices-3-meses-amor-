@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnMensaje.addEventListener("click", () => {
-    mostrarPantalla("pantalla-galeria");
+    mostrarPantalla("pantalla-final");
   });
 
   btnCorazones.addEventListener("click", () => {
