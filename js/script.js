@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         corazon.remove();
         contador++;
         contadorSpan.textContent = contador;
-        if (contador >= 3) {
+        if (contador >= 12) {
           clearInterval(intervalo);
           setTimeout(() => {
             mostrarPantalla("pantalla-galeria");
