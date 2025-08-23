@@ -79,6 +79,11 @@ body {
   to { top: 100%; }
 }
 
+.pantalla-galeria .titulo {
+  margin-bottom: 10px;
+}
+
+
 .carta {
   background: #fff;
   padding: 1.5rem;
@@ -88,6 +93,10 @@ body {
   margin: auto;
   font-size: 1.2rem;
   line-height: 1.6;
+}
+
+.pantalla-galeria .btn-primario {
+  margin-top: 15px; 
 }
 
 .final-card {
