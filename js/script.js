@@ -31,9 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function iniciarJuego() {
-    let intervalo = setInterval(() => {
-      crearCorazon();
-    }, 1200);
+  setInterval(() => {
+    let cantidad = Math.floor(Math.random() * 2) + 2; 
+    
+    for (let i = 0; i < cantidad; i++) {
+    crearCorazon();
+  }
+}, 500);
 
     function crearCorazon() {
       const corazon = document.createElement("div");
