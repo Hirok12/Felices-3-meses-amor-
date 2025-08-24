@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function iniciarJuego() {
   setInterval(() => {
-    let cantidad = Math.floor(Math.random() * 2) + 2; 
+    let cantidad = Math.floor(Math.random() * 1) + 1; 
     
     for (let i = 0; i < cantidad; i++) {
     crearCorazon();
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }, 800);
 
     let contador = 0;
-    const meta = 60;
+    const meta = 20;
     let intervalo:
       
     function crearCorazon() {
