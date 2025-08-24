@@ -146,8 +146,21 @@ body {
 }
 
 /* Pantallas con scroll */
-.pantalla-galeria, .pantalla-final {
-  justify-content: flex-start;
+/* Pantalla de la carta */
+.pantalla-galeria {
+  justify-content: center;   /* centra contenido */
+  padding: 2rem 1rem;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.pantalla-galeria .carta {
+  margin-bottom: 1rem;       /* espacio pequeño con el botón */
+}
+
+/* Pantalla final */
+.pantalla-final {
+  justify-content: flex-start; /* contenido empieza arriba */
   padding: 2rem 1rem;
   height: auto;
   min-height: 100vh;
