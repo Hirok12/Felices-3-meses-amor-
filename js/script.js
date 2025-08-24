@@ -37,8 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < cantidad; i++) {
     crearCorazon();
   }
-}, 500);
+}, 800);
 
+    let contador = 0;
+    const meta = 60;
+    let intervalo:
+      
     function crearCorazon() {
       const corazon = document.createElement("div");
       corazon.classList.add("corazon");
@@ -50,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
         corazon.remove();
         contador++;
         contadorSpan.textContent = contador;
-        if (contador >= 12) {
+        
+        if (contador >= meta) {
           clearInterval(intervalo);
           setTimeout(() => {
             mostrarPantalla("pantalla-galeria");
